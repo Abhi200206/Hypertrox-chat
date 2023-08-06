@@ -1,0 +1,22 @@
+.but:hover{
+background-color: darkgreen;
+height: 40px;
+    width: 80px;
+    border-radius: 20px;
+}
+.but{
+    background-color: green;
+    height: 25px;
+    width: 60px;
+    border-radius: 20px;
+} 
+#head{
+   
+    text-align: center;
+    
+    
+}
+.king{
+    background-color: antiquewhite;
+}  
+

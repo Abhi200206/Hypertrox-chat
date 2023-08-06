@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="user.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="height: 100px;background-color: lightblue;">
+        <h1 style="text-align: left;">HYPERTROX</h1>
+        <nav style="text-align: right;">
+            <button id="btn"><a href="#contact">contact us</a></button>
+            <button id="user" onclick="toggleUserData()"><span id="user"></span></button>
+            <button id="btn"><a href="index.html">Logout</a></button>
+        </nav>
+    </div>
+   
+    <div style="background-color: antiquewhite;">
+        <br>
+        <h1><span>Welcome, </span><span id="username"></span>!</h1>
+        <p><span id="ved"></span> <span id="email"></span></p>
+        <p><span id="chand"></span> <span id="Name"></span></p>
+        <br>
+    </div>
+    <div id="middle">
+        <br>
+        <br>
+        <br>
+        <h2 style="text-align: center;">Welcome to Hypertrox</h2>
+        <br><br>
+        
+        <p>In a world that moves at lightning speed, time is our most valuable asset. At Hypertrox, we understand the importance of efficiency and innovation. 
+            Our mission is simple yet powerful: to be different, think different, and make a positive impact on your precious time.
+            In our pursuit of uniqueness, we have crafted applications that are tailored to streamline your daily tasks, without adding any burden to your schedule. 
+                Our commitment to staying true to our core values means that we always strive to offer services that genuinely add value to your life.</p>
+                 <p>By choosing Hypertrox, you have joined a community of diverse individuals who share a passion for thinking differently. Together, we embark on a journey to 
+                    embrace creativity, seize opportunities, and make every moment count.Thank you for being a part of our community. We promise to continue pushing boundaries, exploring new possibilities, and providing you with meaningful 
+                        solutions that enhance your experiences.</p>
+                        <p>Be different, think different, and let's make the most out of every moment!</p>
+                        <p>-The Hypertrox Team</p>
+                        <br><br>
+                        
+    </div>
+
+    <footer>
+        <div id="contact" >
+            <br>
+            <h1 style="text-align: left;">HYPERTROX</h1>
+            
+            <p>This site is designed by <a href="https://github.com/Abhi200206">@Abhi200206</a></p>
+            <a href="mailto:annamaneni.abhinav@gmail.com">annamaneni.abhinav@gmail.com</a></p>
+            <a href="https://www.linkedin.com/in/abhinavrao77/"><img src="LinkedIn Circled.png" alt="404 not found"></a>
+            <a href="https://twitter.com/Abhinav_1899"><img src="Twitter (1).png" alt="404 not found"></a>
+        
+        </div>
+        </footer>
+
+    <script>
+         const urlParams = new URLSearchParams(window.location.search);
+         const username = urlParams.get('username');
+         const usernameElement = document.getElementById('username');
+         const userElement = document.getElementById('user');
+         userElement.textContent = username;
+         usernameElement.textContent = username;
+
+        function toggleUserData() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const username = urlParams.get('username');
+            const email = urlParams.get('email');
+            const Name = urlParams.get('Name');
+            const emailElement = document.getElementById('email');
+            const nameElement = document.getElementById('Name');
+            const vedElement = document.getElementById('ved');
+            const chandElement = document.getElementById('chand');
+            usernameElement.textContent = username;
+     
+
+            if ( emailElement.textContent === '' && nameElement.textContent === '') {
+              
+                emailElement.textContent = email;
+                nameElement.textContent = Name;
+                vedElement.textContent = 'Email:';
+                chandElement.textContent = 'Name:';
+            } else {
+                emailElement.textContent = '';
+                nameElement.textContent = '';
+                vedElement.textContent = '';
+                chandElement.textContent = '';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+#user{
+    background-color: rgb(163, 236, 163);
+    height: 25px;
+    width: 80px;
+    border-radius: 20px;
+}
+#user:hover{
+    background-color: darkgreen;
+    height: 40px;
+    width: 80px;
+    border-radius: 20px;
+}
+#contact{
+    text-align: center;
+    background-color: lightblue;
+    
+   bottom: 2rem;
+   
+}
+#btn{
+    background-color: rgb(163, 236, 163);
+    height: 25px;
+    width: 80px;
+    border-radius: 20px;
+
+}
+#btn:hover{
+    background-color: darkgreen;
+    height: 40px;
+    width: 80px;
+    border-radius: 20px;
+
+}
+#middle{
+    color: white;
+    font-size:large;
+   font-family:sans-serif;
+   background-color: rgb(51, 57, 49);
+
+}

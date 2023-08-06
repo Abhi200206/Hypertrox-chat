@@ -1,0 +1,58 @@
+#login{
+    background-color: rgb(163, 236, 163);
+    height: 25px;
+    width: 60px;
+    border-radius: 20px;
+}
+#login:hover{
+    background-color: darkgreen;
+    height: 40px;
+    width: 80px;
+    border-radius: 20px;
+}
+#signup{
+    background-color: rgb(162, 162, 223);
+    height: 25px;
+    width: 60px;
+    border-radius: 20px;
+}
+#signup:hover{
+    background-color: darkblue;
+    height: 40px;
+    width: 80px;
+    border-radius: 20px;    
+}
+#contact{
+    text-align: center;
+    background-color: lightblue;
+    
+   bottom: 2rem;
+   
+}
+#main{
+    text-align: center;
+    font-family: sans-serif;
+    height: auto;
+    background-color: rgb(106, 106, 208);
+}
+#head{
+    text-align: left;
+    
+    
+}
+#set{
+    background-color: lightblue;
+
+
+}
+#pic{
+    background-image: url('hypertrox.jpg');
+    height:400px;
+    width: auto;
+}
+#about{
+    background-color:rgb(183, 137, 78);
+    text-align: center;
+    font: 1em sans-serif;
+    height: auto;
+}
