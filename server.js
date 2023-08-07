@@ -1,9 +1,7 @@
-
 const express = require('express');
 const app = express();
 var mysql = require('mysql2');
 const bodyParser = require('body-parser');
-
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 const url=__dirname ;
@@ -89,6 +87,26 @@ app.get('/user.html',(req,res)=> {
   
 
   res.render('user', { username });
+});
+app.post('/search',(req,res)=>{
+  const usersearch=req.body.usersearch;
+  const con = mysql.createConnection({
+    host: "localhost",
+    user: "user1",
+    password: "pswd123",
+    database: "user"
+  });
+  con.connect(function(err) {
+    if (err) throw err;
+    console.log("Connected!");
+    const sql = "select username from hypertrox where username = ?;";
+    con.query(sql,[usersearch],  function (err, result) {
+      if (err)
+      throw err;
+      console.log("fetched sucessfully");
+      res.send(result);
+    });
+  });
 });
 
 

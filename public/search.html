@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>users found:</h2><br><br>
+    <span id="searchuser"></span>
+    <script>
+         const urlParams = new URLSearchParams(window.location.search);
+         const username = urlParams.get('username');
+         const searchuser = document.getElementById('searchuser');
+         searchuserElement.textContent = username;
+    </script>
+    
+</body>
+</html>
