@@ -7,12 +7,12 @@
 </head>
 <body>
     <h2>users found:</h2><br><br>
-    <span id="searchuser"></span>
+   <button> <span id="search"></span></button>
     <script>
          const urlParams = new URLSearchParams(window.location.search);
          const username = urlParams.get('username');
-         const searchuser = document.getElementById('searchuser');
-         searchuserElement.textContent = username;
+         const search = document.getElementById('search');
+         search.textContent = username;
     </script>
     
 </body>
