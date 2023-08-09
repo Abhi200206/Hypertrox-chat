@@ -10,33 +10,7 @@ const http = require('http');
 const server = http.createServer(app);
 const io = require('socket.io')(server);
 //
-io.on('connection', socket => {
-  console.log('User connected:', socket.id);
 
-  socket.on('storeClientInfo', userId => {
-    connectedClients[userId] = socket;
-  });
-
-  socket.on('disconnect', () => {
-    console.log('User disconnected:', socket.id);
-    const userId = Object.keys(connectedClients).find(key => connectedClients[key] === socket);
-    if (userId) {
-      delete connectedClients[userId];
-    }
-  });
-
-  socket.on('chatMessage', ({ senderId, receiverId, message }) => {
-    const senderSocket = connectedClients[senderId];
-    const receiverSocket = connectedClients[receiverId];
-
-    if (senderSocket && receiverSocket) {
-      senderSocket.emit('chatMessage', { senderId, receiverId, message });
-      receiverSocket.emit('chatMessage', { senderId, receiverId, message });
-    }
-  });
-});
-
-//
 app.get('/', (req, res) => {
   res.sendFile(url+'/public/index.html');
 });
@@ -136,13 +110,24 @@ app.post('/search',(req,res)=>{
       if (err)
       throw err;
       console.log("fetched sucessfully");
+      if (result.length === 0) {
+        
+        res.send('Invalid username or password');
+      }
+      else{
       const user = result[0];
       console.log(result);
       console.log("user:",user);
-      res.redirect(`/search.html?username=${user.username}`);
+      res.redirect(`/chat.html?username=${user.username}`);
+      }
     });
   });
 });
+
+
+  app.use('/socket.io', express.static(__dirname + '/node_modules/socket.io/index.js'));
+
+
 
 
 
