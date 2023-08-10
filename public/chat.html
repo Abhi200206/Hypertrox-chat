@@ -15,6 +15,9 @@
         <button id="send-button" onclick="send()">Send</button>
       </div>
       <script>
+         const urlParams = new URLSearchParams(window.location.search);
+         const username = urlParams.get('username');
+         console.log(username);
         const socket = new WebSocket('ws://localhost:4000');
         console.log('Connected to server');
         function send(){
