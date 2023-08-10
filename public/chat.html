@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="/socket.io/socket.io.js"></script>
-
     <link rel="stylesheet" href="chat.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,53 +10,31 @@
     <div id="chat-box">
         <div id="messages"></div>
         <input type="text" id="message-input" placeholder="Type your message...">
-        <button id="send-button">Send</button>
+        <button id="send-button" onclick="send()">Send</button>
       </div>
       <script>
-        console.log('Before socket initialization');
-        const socket = io();
-        console.log('After socket initialization');
+        
+        const socket = new WebSocket('ws://localhost:4000/chat.html');
+        function send(){
+            var msg = document.getElementById('message-input').value;
+            
+            console.log(msg);
+            const socket = new WebSocket('ws://localhost:4000/chat.html');
+    socket.addEventListener('open', (event) => {
+    console.log('Connected to server');
+  
+  socket.send(msg);
+});
+}
 
-      
-        const messagesDiv = document.getElementById('messages');
-        const messageInput = document.getElementById('message-input');
-        const sendButton = document.getElementById('send-button');
-      
-        const urlParams = new URLSearchParams(window.location.search);
-        const username = urlParams.get('username');
-       
-      
-        sendButton.addEventListener('click', () => {
-          const receiverId = getUserIdOfSelectedFriend(); // Replace with the actual function to get the friend's ID
-          const message = messageInput.value.trim();
-      
-          if (receiverId && message) {
-            socket.emit('chatMessage', { senderId: username, receiverId, message });
-            displayMessage(username, message);
-            messageInput.value = '';
-          }
-        });
-      
-        socket.on('chatMessage', ({ senderId, receiverId, message }) => {
-          if (senderId === username) {
-            displayMessage('You', message);
-          } else {
-            displayMessage(senderId, message);
-          }
-        });
-      
-        function displayMessage(sender, message) {
-          const messageElement = document.createElement('div');
-          messageElement.textContent = `${sender}: ${message}`;
-          messagesDiv.appendChild(messageElement);
-        }
-      
-        function getUserIdOfSelectedFriend() {
-            const user = urlParams.get('username');
-            return user;
-          
-        }
-      </script>
+socket.addEventListener('message', (event) => {
+  console.log(`Received from server: ${event.data}`);
+});
+
+socket.addEventListener('close', (event) => {
+  console.log('Disconnected from server');
+});
+    </script>
       
 
     

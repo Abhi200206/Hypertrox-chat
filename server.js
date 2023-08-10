@@ -1,15 +1,29 @@
 const express = require('express');
 const app = express();
+//
+const WebSocket = require('ws');
+
+const server = new WebSocket.Server({ port: 4000 });
+
+server.on('connection', (socket) => {
+  console.log('Client connected');
+
+  socket.on('message', (message) => {
+    console.log(`Received: ${message}`);
+    socket.send(`Echo: ${message}`);
+  });
+
+  socket.on('close', () => {
+    console.log('Client disconnected');
+  });
+});
+//
+
 var mysql = require('mysql2');
 const bodyParser = require('body-parser');
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 const url=__dirname ;
-//
-const http = require('http');
-const server = http.createServer(app);
-const io = require('socket.io')(server);
-//
 
 app.get('/', (req, res) => {
   res.sendFile(url+'/public/index.html');
@@ -125,8 +139,7 @@ app.post('/search',(req,res)=>{
 });
 
 
-  app.use('/socket.io', express.static(__dirname + '/node_modules/socket.io/index.js'));
-
+  
 
 
 
