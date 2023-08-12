@@ -31,15 +31,12 @@
   socket.send(msg);
 });
 
-if(document.getElementById('msgs').innerHTML=='')
-{
-    document.getElementById('msgs').innerHTML=msg;
-}
-else{
-    document.getElementById('msgs').innerHTML='';
-}
+const msgsElement = document.getElementById('msgs');
+    msgsElement.innerHTML += `<p><strong>You to ${username}:</strong> ${msg}</p>`;
 
 }
+
+
 
 socket.addEventListener('message', (event) => {
   console.log(`Received from server: ${event.data}`);
