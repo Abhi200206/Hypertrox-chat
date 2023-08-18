@@ -119,6 +119,7 @@ app.post('/search',(req,res)=>{
   con.connect(function(err) {
     if (err) throw err;
     console.log("Connected!");
+
     const sql = "select username from hypertrox where username = ?;";
     con.query(sql,[usersearch],  function (err, result) {
       if (err)
@@ -136,6 +137,12 @@ app.post('/search',(req,res)=>{
       }
     });
   });
+});
+app.post('/message',(req,res)=>{
+  const msg = req.body.message;
+  res.redirect(`/user.html?message=${msg}`);
+
+
 });
   
 

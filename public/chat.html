@@ -7,44 +7,18 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="chat-box">
-        <div id="messages">
-            <p id="msgs"></p>
-        </div>
-        <input type="text" id="message-input" placeholder="Type your message...">
-        <button id="send-button" onclick="send()">Send</button>
-      </div>
+  <div>
+    
+     <h1> @<span id="vat"></span></h1>
+     </div>
+      
       <script>
          const urlParams = new URLSearchParams(window.location.search);
-         const username = urlParams.get('username');
-         console.log(username);
-        const socket = new WebSocket('ws://localhost:4000');
-        console.log('Connected to server');
-        function send(){
-            var msg = document.getElementById('message-input').value;
-            
-            console.log(msg);
-            const socket = new WebSocket('ws://localhost:4000');
-    socket.addEventListener('open', (event) => {
-    
-  socket.send(username);
-  socket.send(msg);
-});
-
-const msgsElement = document.getElementById('msgs');
-    msgsElement.innerHTML += `<p><strong>You to ${username}:</strong> ${msg}</p>`;
-
-}
-
-
-
-socket.addEventListener('message', (event) => {
-  console.log(`Received from server: ${event.data}`);
-});
-
-socket.addEventListener('close', (event) => {
-  console.log('Disconnected from server');
-});
+         const user = urlParams.get('username');
+         const userElement = document.getElementById('vat');
+         userElement.textContent = user;
+         console.log(user);
+     
     </script>
       
 

@@ -15,6 +15,17 @@
             <button id="btn"><a href="index.html">Logout</a></button>
         </nav>
     </div>
+    <div>
+        <h2>what you want to tell us today!!</h2>
+        <form action="/message" method="post">
+            <input type="text" id="message" name="message"><br>
+            <button type="submit">maar</button>
+
+        </form>
+    </div>
+    <div>
+        <p id="msgs"></p>
+    </div>
    
     <div style="background-color: antiquewhite;">
         <br>
@@ -68,6 +79,10 @@
          const userElement = document.getElementById('user');
          userElement.textContent = username;
          usernameElement.textContent = username;
+         const message= urlParams.get('message');
+            console.log(message);
+            const msgsElement = document.getElementById('msgs');
+           msgsElement.innerHTML += `<p><strong> ${message}</strong></p>`;
 
         function toggleUserData() {
             const urlParams = new URLSearchParams(window.location.search);
